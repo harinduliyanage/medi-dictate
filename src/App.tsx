@@ -7,6 +7,7 @@ import {GestureHandlerRootView} from "react-native-gesture-handler";
 
 import LoginScreen from './modules/auth/login.screen';
 import SignUpScreen from './modules/auth/sign-up.screen';
+import DictateScreen from './modules/dictate/dictate.screen';
 import HomeScreen from './modules/home.screen';
 
 // Amplify.configure(awsconfig);
@@ -23,7 +24,7 @@ const App: React.FC = () => {
     const checkAuthStatus = async () => {
       try {
         // await Auth.currentAuthenticatedUser();
-        setIsAuthenticated(false);
+        setIsAuthenticated(true);
       } catch {
         setIsAuthenticated(false);
       }
@@ -36,6 +37,7 @@ const App: React.FC = () => {
         <NavigationContainer>
           {isAuthenticated ? (
               <AppStack.Navigator>
+                <AppStack.Screen name="Dictate" component={DictateScreen}/>
                 <AppStack.Screen name="Home" component={HomeScreen}/>
               </AppStack.Navigator>
           ) : (
